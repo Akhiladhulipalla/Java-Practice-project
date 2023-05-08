@@ -1,0 +1,46 @@
+package classes;
+
+
+public class classes{
+	private String msg="Welcome to Github";
+	
+	class inner{
+		void hello() {System.out.println(msg+",Let us login to Github");
+	}
+}
+	public static void main(String[] args) {
+		classes obj=new classes();
+		classes.inner in =obj.new inner();
+		in.hello();
+
+	}
+}
+public class classes1{
+	private String msg="Github";
+	void display() {
+		class inner{
+			void msg() {
+				System.out.println(msg);
+			}
+		}
+	inner i=new inner();
+	i.msg();
+	
+	}
+   public static void main(String[] args) {
+     Anonymousclasses Anonymousclasses = new Anonymousclasses() {
+	   public void display() {
+		   System.out.println("Anonymous Inner Class");
+	   }
+	   
+   };
+classes1 i;
+i.display();	
+}
+}
+	
+
+
+Output:
+======
+Welcome to Github,Let us login to Github

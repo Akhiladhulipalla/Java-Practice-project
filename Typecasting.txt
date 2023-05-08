@@ -1,0 +1,45 @@
+package JavaProject;
+public class JavaClass {
+	public static void main(String[] args) {
+
+		//Implicit Typecasting
+		System.out.println("---Implicit Type casting---");
+		System.out.println();
+
+		//Creating a Integer data
+		int number=100;
+		System.out.println("->The value of a number is:"+number);
+		
+
+		//Converting to Float data
+		float A=number;
+		System.out.println("->The  float value is:"+A);
+		System.out.println();
+		
+
+		//Explicit Typecasting
+		System.out.println("----Explicit Type casting----");
+		System.out.println();
+
+		//Creating a Double 
+		double num=100.123;
+		System.out.println("->The value of Double is :"+num);
+		
+		//Converting to Intiger data
+		int data=(int)num;
+		System.out.println("->The value of Intiger is:"+data);
+		
+		
+
+Output:
+======
+
+   ---Implicit Type casting---
+
+The value of a number is:100
+The  float value is:100.0
+
+----Explicit Type casting----
+
+The value of Double is :100.123
+The value of Intiger is:100

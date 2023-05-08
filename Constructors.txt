@@ -1,0 +1,66 @@
+class Students{
+int reg_no;
+int age;
+String f_name;
+String l_name;
+String email_id;
+void display() {
+System.out.println(reg_no+" "+age+" "+f_name+" "+l_name+""+email_id);
+}
+}
+public class Constructor {
+public static void main(String[] args) {
+Students s1=new Students();
+Students s2=new Students();
+Students s3=new Students();
+Students s4=new Students();
+Students s5=new Students();
+s1.display();
+s2.display();
+s3.display();
+s4.display();
+s5.display();
+}
+
+}
+
+
+Output:
+=======
+
+0 0 null nullnull
+0 0 null nullnull
+0 0 null nullnull
+0 0 null nullnull
+0 0 null nullnull
+
+
+public class parametrizedConstructor {
+String studentName;
+String studentEmail;
+int studentAge;
+//constructor
+parametrizedConstructor(String name, int age, String
+email){
+studentName = name;
+studentAge = age;
+studentEmail = email;
+}
+void display(){
+System.out.println(studentName+ " "+studentAge+ ""+studentEmail);
+}
+public static void main(String[] args) {
+// TODO Auto-generated method stub
+parametrizedConstructor Obj = new
+parametrizedConstructor("Ramu\n",23,"\ramu@gmail");
+Obj.display();
+}
+}
+
+
+Output:
+=======
+
+Ramu
+ 23
+ramu@gmail

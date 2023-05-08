@@ -1,0 +1,21 @@
+public class GFG {
+	public static void main(String[] args) {
+		StringBuffer sbr = new StringBuffer("Hello");
+		StringBuilder sbdr = new StringBuilder("Good Morning");
+		String str = sbr.toString();
+		System.out.println("StringBuffer object to String :");
+		System.out.println(str);
+		String str1=sbdr.toString();
+		System.out.println("StringBuilder object to String :");
+		System.out.println(str1);
+		sbr.append("World");
+		System.out.println(sbr);
+		System.out.println(str);
+	}
+}
+
+
+Output:
+=====
+olleH
+Good Morning

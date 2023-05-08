@@ -1,0 +1,44 @@
+class defaultspecifier
+	 {
+	 void display()
+	 {
+	 System.out.println("defalut access specifier");
+	 }
+	}
+public class defaultspecifier1 {
+	
+	 public static void main(String[] args) {
+	
+	 System.out.println("Dafault Access Specifier");
+	 defaultspecifier object = new
+	defaultspecifier();
+	 object.display();
+}
+}
+
+Output:
+======
+default access specifier
+Default Access Specifier
+	
+
+class privateaccessspecifier
+	{
+	private void display()
+	{
+	System.out.println("private access specifier");
+	}
+	}
+	public class privatespecifier {
+	public static void main(String[] args) {
+	// TODO Auto-generated method stub
+	System.out.println("Private Access Specifier");
+	privateaccessspecifier obj = new privateaccessspecifier();
+
+}
+	}
+
+
+Output:
+=======
+private access specifier

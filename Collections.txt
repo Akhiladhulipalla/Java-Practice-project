@@ -1,0 +1,67 @@
+
+package Main;
+import java.util.*;
+public class DemoCollections{
+public static void main(String[] args) {
+
+System.out.println("ArrayList");
+ArrayList<String> car=new ArrayList<String>();
+car.add("BMW");
+car.add("Audi");
+System.out.println(car);
+
+System.out.println("\nLinkedList");
+LinkedList<String> cars = new
+LinkedList<String>();
+cars.add("Akhila");
+cars.add("Ramu");
+System.out.println(cars);
+
+System.out.println("\n");
+System.out.println("HashSet");
+HashSet<Integer> set=new HashSet<Integer>();
+set.add(10);
+set.add(20);
+set.add(30);
+set.add(40);
+System.out.println(set);
+
+System.out.println("\n");
+System.out.println("LinkedHashSet");
+LinkedHashSet<Integer> set2=new
+LinkedHashSet<Integer>();
+set2.add(1);
+set2.add(2);
+set2.add(3);
+set2.add(4);
+set2.add(5);
+set2.add(6);
+set2.add(7);
+set2.add(8);
+System.out.println(set2);
+//creating vector
+System.out.println("\n");
+System.out.println("Vector");
+Vector<Integer> vec = new Vector();
+vec.addElement(15);
+vec.addElement(30);
+System.out.println(vec);
+}
+}
+Output:
+=======
+
+LinkedList
+[Akhila, Ramu]
+
+
+HashSet
+[20, 40, 10, 30]
+
+
+LinkedHashSet
+[1, 2, 3, 4, 5, 6, 7, 8]
+
+
+Vector
+[15, 30]

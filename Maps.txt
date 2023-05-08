@@ -1,0 +1,42 @@
+package DemoMap;
+import java.util.*;
+public class Demomap {
+	public static void main(String[] args) {
+		
+	HashMap<Integer,String>hm=new HashMap<Integer,String>();
+	hm.put(1, "---Akhila");
+	hm.put(2, "---Ramu");
+	hm.put(3, "---Lakshman");
+	System.out.println();
+	System.out.println("\nThe elements of HashMap are :");
+	for(Map.Entry m:hm.entrySet()) {
+		System.out.println(m.getKey()+""+m.getValue());
+	}
+	Hashtable<Integer,String> ht=new Hashtable<Integer,String>();
+	
+	ht.put(4, "---Vinodh");
+	ht.put(5, "---Honey");
+	ht.put(6, "---Cherry");
+	ht.put(7,"----Milky");
+	System.out.println("\nThe elements of Hashtable are");
+	for(Map.Entry n:ht.entrySet()){
+	System.out.println(n.getKey()+""+n.getValue());
+	}
+	}
+
+}
+
+
+Output:
+======
+
+The elements of HashMap are :
+1---Akhila
+2---Ramu
+3---Lakshman
+
+The elements of Hashtable are
+7----Milky
+6---Cherry
+5---Honey
+4---Vinodh

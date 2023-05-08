@@ -1,0 +1,29 @@
+package Methods;
+
+public class methods {
+
+			static int add(int a,int b) {
+			
+			int sum = a+b;
+			return sum;
+			
+		}
+	public static void main(String[] args) {
+	int a = 100;
+	int b= 200;
+	int result = add(a,b);
+	System.out.println("The result is: "+a+"+"+b+"="+result);
+	
+	a=5;
+	b=10;
+	result=add(a,b);
+	System.out.println("The result is :"+a+"+"+b+"="+result);
+}
+	}
+
+
+output:
+======
+
+The result is: 100+200=300
+The result is :5+10=15

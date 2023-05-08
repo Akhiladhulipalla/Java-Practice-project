@@ -1,0 +1,18 @@
+package Regex;
+import java.util.regex.*;
+public class RegularExpression {
+	public static void main(String[] args) {
+		Pattern p = Pattern.compile("Akhila");
+		Matcher m = p.matcher("Dhulipalla");
+		boolean b=m.matches();
+		boolean b2=Pattern.compile("Akhila").matcher("Dhulipalla").matches();
+		boolean b3=Pattern.matches("Akhila","Dhulipalla");
+		System.out.println(b+"  "+b2+"  "+b3);
+	}
+
+}
+
+
+Output:
+======
+false  false  false

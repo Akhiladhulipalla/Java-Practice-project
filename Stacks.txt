@@ -1,0 +1,26 @@
+import java.util.*;
+
+	public class Stacks {
+		public static void main(String args[])
+		{
+
+			Stack<String> stack = new Stack<String>();
+			stack.add("Akhila");
+			stack.add("Ramu");
+			stack.add("Lakshman");
+			stack.add("10");
+			stack.add("20");
+            System.out.println("Stack: " + stack);
+			String rem_ele = stack.remove(4);
+			System.out.println("Removed element: "+ rem_ele);
+			System.out.println("Final Stack: "+ stack);
+		}
+	}
+
+
+Output:
+=======
+
+Stack: [Akhila, Ramu, Lakshman, 10, 20]
+Removed element: 20
+Final Stack: [Akhila, Ramu, Lakshman, 10]

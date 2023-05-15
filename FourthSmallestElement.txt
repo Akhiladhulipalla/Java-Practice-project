@@ -1,0 +1,17 @@
+import java.util.Arrays;
+
+public class FourthSmallestElement {
+    public static void main(String[] args) {
+        int[] arr = { 10, 20, 15, 25, 30, 5 };
+        int n = arr.length;
+        int k = 4;
+        Arrays.sort(arr);
+        System.out.println("Fourth smallest element is " + arr[k - 1]);
+    }
+}
+
+
+Output:
+======
+
+Fourth smallest element is 20

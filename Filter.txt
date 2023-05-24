@@ -1,0 +1,109 @@
+Index:
+======
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 
+Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Login</title>
+</head>
+<body>
+	<form action="WelcomeServlet" method="POST">
+		Username:<input type="text" name="userName"/>
+		<br/><br/>
+		Password:<input type="password" name="password"/>
+		<br/><br/> 
+		<input type="submit" value="login"/> 
+	</form>  
+</body>
+</html>
+
+FirstServelt:
+===========
+import java.io.IOException;
+import java.io.PrintWriter;
+import javax.servlet.Filter;
+import javax.servlet.FilterChain;
+import javax.servlet.FilterConfig;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
+ 
+/**
+* This class is used as a filter.
+* @author w3spoint
+*/
+public class Servlet1 implements Filter {
+	private static final long serialVersionUID = 1L;
+ 
+	public void init(FilterConfig filterConfig) 
+		throws ServletException {
+ 
+	}  
+ 
+      public void doFilter(ServletRequest request, 
+			ServletResponse response, FilterChain chain) 
+	                throws IOException, ServletException {  
+ 
+	response.setContentType("text/html"); 
+    	PrintWriter out = response.getWriter();
+ 
+    	//get parameters from request object.
+    	String userName = request.getParameter("userName").trim();
+    	String password = request.getParameter("password").trim();
+ 
+    	//check for null and empty values.
+    	if(userName == null || userName.equals("") || 
+    			password == null || password.equals("")){
+    		out.print("Please enter both username " +
+    				"and password. <br/><br/>");
+    		RequestDispatcher requestDispatcher = 
+    			request.getRequestDispatcher("/login.html");
+    		requestDispatcher.include(request, response);
+    	}//Check for valid username and password.
+    	else if(userName.equals("jai") && password.equals("1234")){
+    		 chain.doFilter(request, response);
+    	}else{
+    		out.print("Wrong username or password. <br/><br/>");
+    		RequestDispatcher requestDispatcher = 
+    			request.getRequestDispatcher("/login.html");
+    		requestDispatcher.include(request, response);
+    	}	          
+     }  
+ 
+    public void destroy() {
+ 
+    }  
+}
+SecondServlet:
+=============
+import java.io.IOException;
+import java.io.PrintWriter;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+ 
+/**
+ * This class is used to print login message 
+ * if user logged in successfully.
+ */
+public class Servlet2 extends HttpServlet {
+    private static final long serialVersionUID = 1L;
+ 
+   //no-argument constructor
+    public Servlet2() {
+ 
+    }
+ 
+    protected void doPost(HttpServletRequest request, 
+		HttpServletResponse response)
+	            throws ServletException, IOException {
+	response.setContentType("text/html");  
+        PrintWriter out = response.getWriter();  
+ 
+        out.print("<h1>You are logged in successfully.</h1>");  
+        out.close();  
+    }
+}

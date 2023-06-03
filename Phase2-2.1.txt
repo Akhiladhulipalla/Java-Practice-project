@@ -1,0 +1,40 @@
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
+public class JDBCServlet extends HttpServlet {
+
+    private Connection connection;
+
+    @Override
+    public void init() throws ServletException {
+        super.init();
+        // JDBC initialization
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            String url = "jdbc:mysql://localhost:3306/your_database_name";
+            String username = "your_username";
+            String password = "your_password";
+            connection = DriverManager.getConnection(url, username, password);
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+            // Handle exceptions appropriately
+        }
+    }
+
+    @Override
+    public void destroy() {
+        super.destroy();
+        // JDBC cleanup
+        try {
+            if (connection != null && !connection.isClosed()) {
+                connection.close();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            // Handle exceptions appropriately
+        }
+    }
+}

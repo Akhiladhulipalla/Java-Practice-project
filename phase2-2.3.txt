@@ -1,0 +1,124 @@
+ 				***** 	 DataBase	*****
+
+
+CREATE DATABASE mydatabase;
+
+USE mydatabase;
+
+CREATE TABLE employees (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(50),
+  designation VARCHAR(50)
+);
+
+
+
+			*****	Index.Html	*****
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Employee Form</title>
+</head>
+<body>
+  <h1>Employee Form</h1>
+
+  <form action="EmployeeServlet" method="post">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required><br><br>
+
+    <label for="designation">Designation:</label>
+    <input type="text" id="designation" name="designation" required><br><br>
+
+    <input type="submit" value="Submit">
+  </form>
+</body>
+</html>
+
+
+			*****	Servlet	*****
+
+import java.io.IOException;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.sql.*;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+public class EmployeeServlet extends HttpServlet {
+
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // Retrieve data from the request parameters
+        String name = request.getParameter("name");
+        String designation = request.getParameter("designation");
+
+        // JDBC code to add data to the table
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            String url = "jdbc:mysql://localhost:3306/mydatabase";
+            String username = "your_username";
+            String password = "your_password";
+            Connection connection = DriverManager.getConnection(url, username, password);
+
+            // Insert data into the employees table
+            String insertQuery = "INSERT INTO employees (name, designation) VALUES (?, ?)";
+            PreparedStatement preparedStatement = connection.prepareStatement(insertQuery);
+            preparedStatement.setString(1, name);
+            preparedStatement.setString(2, designation);
+            preparedStatement.executeUpdate();
+
+            // Cleanup
+            preparedStatement.close();
+            connection.close();
+
+            // Redirect back to the HTML page
+            response.sendRedirect("index.html");
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+            // Handle exceptions appropriately
+        }
+    }
+
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // JDBC code to list data from the table
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            String url = "jdbc:mysql://localhost:3306/mydatabase";
+            String username = "your_username";
+            String password = "your_password";
+            Connection connection = DriverManager.getConnection(url, username, password);
+
+            // Fetch data from the employees table
+            Statement statement = connection.createStatement();
+            String selectQuery = "SELECT * FROM employees";
+            ResultSet resultSet = statement.executeQuery(selectQuery);
+
+            // Generate HTML response
+            response.setContentType("text/html");
+            PrintWriter out = response.getWriter();
+            out.println("<html><body>");
+            out.println("<h1>Employee List</h1>");
+            out.println("<table border='1'>");
+            out.println("<tr><th>ID</th><th>Name</th><th>Designation</th></tr>");
+            while (resultSet.next()) {
+                int id = resultSet.getInt("id");
+                String name = resultSet.getString("name");
+                String designation = resultSet.getString("designation");
+                out.println("<tr><td>" + id + "</td><td>" + name + "</td><td>" + designation + "</td></tr>");
+            }
+            out.println("</table>");
+            out.println("</body></html>");
+
+            // Cleanup
+            resultSet.close();
+            statement.close();
+            connection.close();
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+            // Handle exceptions appropriately
+        }
+    }
+}
+
